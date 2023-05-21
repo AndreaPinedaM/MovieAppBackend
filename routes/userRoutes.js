@@ -5,7 +5,7 @@ const { loginUser, registerUser, getMyData, updateUser, deleteUser } = require('
 const{protect} =require('../middleware/authMiddleware')
 
 
-router.post('/', registerUser)
+router.post('/signup', registerUser)
 router.post('/login', loginUser)
 //Poniendo la funcion protect(authMiddleware) se protege el endpoint
 router.get('/mydata', protect, getMyData)
