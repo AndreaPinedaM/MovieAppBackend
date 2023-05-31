@@ -14,4 +14,4 @@ router.route('/').get(getMovies).post(protect, setMovies)
 // router.delete('/:id', deleteTareas)
 router.route('/:id').put(protect, updateMovies).delete(protect, deleteMovies)
 
-module.exports = router 
+module.exports = router
