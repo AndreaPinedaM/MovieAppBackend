@@ -3,7 +3,7 @@ const asyncHandler = require("express-async-handler");
 const Movie = require("../models/movieModel");
 
 const getMovies = asyncHandler(async (req, res) => {
-    res.json({ message: "getMovies" });
+    // res.json({ message: "getMovies" });
 
     const movies = await Movie.find();
 
@@ -33,7 +33,20 @@ const setMovies = asyncHandler(async (req, res) => {
         vote_count: req.body.vote_count,
         //Determina el usuario que crea la tarea
         user: req.user.id,
-    });
+    })
+    if (movie) {
+        res.status(201).json({
+            original_title: req.body.original_title,
+            overview: req.body.overview,
+            poster_path: req.body.poster_path,
+            release_date: req.body.release_date,
+            vote_average: req.body.vote_average,
+            vote_count: req.body.vote_count,
+        })
+    } else {
+        res.status(400)
+        throw new Error("No se pudo crear la pelicula.")
+    }
 
     res.status(201).json(movie);
 });
