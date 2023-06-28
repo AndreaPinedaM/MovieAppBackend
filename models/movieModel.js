@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const movieSchema = mongoose.Schema({
-    user:{
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User', // referencia al esquema 
         required: true //Los datos se obtendran del token
@@ -31,9 +31,9 @@ const movieSchema = mongoose.Schema({
         type: Number,
         required: [true, "Introduce la cantidad de votos de la película"]
     }
-    }, {
-        /* Adding a createdAt and updatedAt field to the schema. */
-        timestamps: true
+}, {
+    /* Adding a createdAt and updatedAt field to the schema. */
+    timestamps: true
 })
 
-module.exports = mongoose.model('Movie', movieSchema)
+module.exports = mongoose.model('Movie', movieSchema) 
